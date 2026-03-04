@@ -38,4 +38,22 @@ Para validar que los datos en bruto extraídos del giroscopio y el sensor de pre
 * **Métricas de Precisión:** El modelo alcanza una precisión de **aprox. 90-95%** en el testeo en vivo.
 * **Robustez y Generalización:** El entrenamiento no se ha limitado a un único patrón rígido. Se han introducido amplios grados de libertad en el dataset, grabando figuras dibujadas a **múltiples tamaños, velocidades y direcciones**. Esto demuestra que la red neuronal está aprendiendo la "esencia" cinemática de la figura, siendo tolerante a las variaciones naturales del pulso humano.
 
-*(🎥 Nota para ti: Si tienes un pequeño video o GIF de la terminal mostrando la predicción correcta al dibujar un círculo o triángulo, ¡ponlo aquí! `![Demo Predicción](ruta/a/tu/gif.gif)`)*
+## Limitaciones Conocidas
+
+Al ser un proyecto educativo y experimental basado puramente en sensores inerciales de bajo coste, Stylo se enfrenta a ciertos desafíos físicos y técnicos que marcan las fronteras actuales del proyecto:
+
+* **Espaciado y Coordenadas Absolutas:** Al carecer de un sistema de seguimiento externo (como una cámara o una tableta digitalizadora), el bolígrafo no conoce su posición absoluta en el espacio. Por tanto, no puede determinar con precisión el espacio físico real que el usuario deja entre cada letra o palabra o la posición en la hoja en la que se ha escrito.
+* **Replicación de Trazos vs. Clasificación:** El objetivo de Stylo no es replicar visualmente el trazo exacto en una pantalla (no sirve para capturar firmas digitales idénticas), sino procesar la cinemática para **clasificar** qué carácter se ha intentado escribir.
+* **Deriva (Drift) y Ruido:** Los giroscopios y acelerómetros acumulan pequeños errores con el tiempo (drift). Aunque el Machine Learning ayuda a mitigar este problema buscando patrones relativos en lugar de posiciones absolutas, no se espera un 100% de aciertos absolutos debido al ruido inherente del hardware casero.
+
+---
+
+## Roadmap y Próximos Pasos
+
+El desarrollo de Stylo está planteado de forma iterativa y progresiva. Habiendo superado la fase de clasificación de formas aisladas, los próximos retos implican dar el salto hacia el procesamiento de series temporales continuas.
+
+- [x] **Fase 1: MVP de Hardware.** Ensamblaje y calibración del ESP32, giroscopio y sensor de presión en un formato funcional.
+- [x] **Fase 2: Prueba de Concepto ML.** Captura de dataset propio y entrenamiento de un modelo inicial (Keras) para distinguir entre formas básicas (círculos y triángulos) en trazos independientes con un 90-95% de precisión.
+- [ ] **Fase 3: Ampliación de Vocabulario (Corto Plazo).** Escalar el modelo actual para reconocer entre 3 y 4 letras diferentes, manteniendo la restricción de levantar el bolígrafo entre cada trazo.
+- [ ] **Fase 4: El Reto del Trazo Continuo (Medio Plazo).** Evolucionar la arquitectura de la red neuronal. El objetivo es reconocer varias letras escritas en un mismo trazo continuo, sin levantar el bolígrafo. Esto requerirá transicionar de la clasificación estática a modelos de secuencias temporales (como **RNN, LSTM o 1D-CNN**) y posiblemente explorar funciones de pérdida como **CTC (Connectionist Temporal Classification)**.
+- [ ] **Fase 5: Generación de Texto (Largo Plazo).** Integrar el sistema para que las predicciones del modelo se vuelquen, concatenen y guarden en tiempo real en un archivo de texto digital (`.txt`).
