@@ -22,7 +22,6 @@ Más allá del resultado final, Stylo tiene un fuerte propósito **educativo y e
 
 ## Estado Actual (MVP)
 <img align="right" width="160" src="MVP_Hardware_Stylo.jpeg">
-<img align="right" width="160" src="MVP_Circuit_Stylo.jpeg">
 
 Actualmente, el proyecto se encuentra en una fase de Producto Mínimo Viable (MVP) plenamente funcional, habiendo superado los primeros grandes hitos tanto en la integración de hardware como en la validación del modelo de Machine Learning con datos de círculos y triángulos.
 
@@ -31,6 +30,8 @@ Actualmente, el proyecto se encuentra en una fase de Producto Mínimo Viable (MV
 Se ha logrado construir y calibrar la primera versión física del bolígrafo inteligente. Los componentes están integrados de tal forma que permiten una escritura cómoda y la realización de pruebas en un entorno real:
 * **Sensor de Presión:** Estratégicamente colocado en la punta del bolígrafo. No solo actúa como el "gatillo" del sistema detectando el contacto con el papel, también funciona como un sensor más aportando la fuerza con la que se está presionando en cada momento. Este sensor es crucial para limpiar el ruido y aislar únicamente los datos del giroscopio durante la escritura.
 * **Giroscopio y Microcontrolador (MPU 6050 y ESP32):** Montados de forma compacta para capturar la cinemática en tiempo real sin entorpecer el movimiento natural de la mano.
+
+<img align="right" width="160" src="MVP_Circuit_Stylo.jpeg">
 
 ### 2. Software: Primer Modelo de Deep Learning (Keras)
 Para validar que los datos en bruto extraídos del giroscopio y el sensor de presión contienen la información necesaria para predecir trazos, se ha desarrollado una primera red neuronal utilizando **Keras/TensorFlow**.
