@@ -24,8 +24,7 @@ Más allá del resultado final, Stylo tiene un fuerte propósito **educativo y e
 Actualmente, el proyecto se encuentra en una fase de Producto Mínimo Viable (MVP) plenamente funcional, habiendo superado los primeros grandes hitos tanto en la integración de hardware como en la validación del modelo de Machine Learning con datos de círculos y triángulos.
 
 
-<img align=right height="280" src="MVP_Hardware_Stylo.jpeg">
-<img align=right height="280" src="MVP_Circuit_Stylo.jpeg">
+<img align=right height="300" src="MVP_Hardware_Stylo.jpeg">
 
 ### 1. Hardware: Prototipo Físico Ensamblado
 Se ha logrado construir y calibrar la primera versión física del bolígrafo inteligente. Los componentes están integrados de tal forma que permiten una escritura cómoda y la realización de pruebas en un entorno real:
